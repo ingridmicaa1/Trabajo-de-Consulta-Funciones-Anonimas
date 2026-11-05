@@ -132,15 +132,17 @@ Lista:
     
     ("Tarjeta Gráfica", "Hardware", 450.00, 2) 
 
-Situación real: Selección -filter-
+**Situación real: Selección -filter-**
 
-El sistema necesita filtrar y obtener únicamente los productos que tienen un precio mayor a $40.00 para una promoción especial.
+El sistema necesita filtrar y obtener únicamente los productos que tienen un precio mayor a $100.0 para una promoción especial.
  
 Scala: 
 
     val caro = (p: Producto) => p.precio > 100.0
     val filtrados = productos.filter(caro)
     filtrados
+
+Salida: List(Producto(Silla Gamer,Hardware,199.99,3), Producto(Monitor 144Hz,Hardware,250.0,6), Producto(Tarjeta Gráfica,Hardware,450.0,2))
 
 Java (Streams): 
 
@@ -149,10 +151,103 @@ Java (Streams):
             .collect(Collectors.toList());
         filtrados.forEach(System.out::println);
 
+Salida: Silla Gamer - $199.99
+        Monitor 144Hz - $250.0
+        Tarjeta Gráfica - $450.0
+
+
 Python: 
 
     caro = lambda p: p.precio > 100.0
     filtrados = list(filter(caro, productos))
     print(filtrados)
 
-Situación real: Transformación -map-
+Salida: [ Silla Gamer - $199.99, Monitor 144Hz - $250.0, Tarjeta Gráfica - $450.0 ]
+
+**Situación real: Transformación -map-**
+
+Extraer únicamente los nombres de todos los productos para un menú.
+
+Scala: 
+
+    val extraerNombre = (p: Producto) => p.nombre
+    val nombres = productos.map(extraerNombre)
+    nombres
+    
+Salida: List(Cyberpunk, Teclado Mecánico, Mousepad RGB, Audífonos Gamer, Minecraft, Silla Gamer, Control Inalámbrico, Monitor 144Hz, Elden Ring, FIFA 26, Micrófono USB, Tarjeta Gráfica)
+
+Java (Streams): 
+
+    List<String> nombres = productos.stream()
+        .map(p -> p.nombre)
+        .collect(Collectors.toList());
+    nombres.forEach(System.out::println);
+    
+Salida:[Cyberpunk, Teclado Mecánico, Mousepad RGB, Audífonos Gamer, Minecraft, Silla Gamer, Control Inalámbrico, Monitor 144Hz, Elden Ring, FIFA 26, Micrófono USB, Tarjeta Gráfica]
+
+Python: 
+
+    extraer_nombre = lambda p: p.nombre
+    nombres = list(map(extraer_nombre, productos))
+    print(nombres)
+
+Salida: ['Cyberpunk', 'Teclado Mecánico', 'Mousepad RGB', 'Audífonos Gamer', 'Minecraft', 'Silla Gamer', 'Control Inalámbrico', 'Monitor 144Hz', 'Elden Ring', 'FIFA 26', 'Micrófono USB', 'Tarjeta Gráfica']
+
+**Situación real: Conteo -count-**
+
+Calcular cuántos artículos pertenecen estrictamente a la categoría "Videojuegos".
+
+Scala: 
+
+    val esVideojuego = (p: Producto) => p.categoria == "Videojuegos"
+    val conteoJuegos = productos.count(esVideojuego)
+    conteoJuegos
+
+Salida: 4
+
+Java(Streams): 
+
+    long conteoJuegos = productos.stream()
+        .filter(p -> p.categoria.equals("Videojuegos"))
+        .count();
+    System.out.println(conteoJuegos);
+    
+Salida: 4
+
+Python: 
+
+    es_videojuego = lambda p: p.categoria == "Videojuegos"
+    conteo_juegos = len(list(filter(es_videojuego, productos)))
+    print(conteo_juegos)
+
+Salida: 4
+
+**Situación real: Extremos -maxBy, minBy-**
+
+Identificar cuál es el artículo con el precio más alto de todo el inventario.
+
+Scala: 
+
+    val criterioPrecio = (p: Producto) => p.precio
+    val masCaro = productos.maxBy(criterioPrecio)
+    masCaro
+
+Salida: Producto(Tarjeta Gráfica,Hardware,450.0,2)
+
+Java(Streams): 
+
+    Producto masCaro = productos.stream()
+        .max((p1, p2) -> Double.compare(p1.precio, p2.precio))
+        .orElse(null);
+    System.out.println(masCaro);
+
+Salida: Tarjeta Gráfica - $450.0
+
+Python: 
+
+    criterio_precio = lambda p: p.precio
+    mas_caro = max(productos, key=criterio_precio)
+    print(mas_caro)
+
+Salida: Tarjeta Gráfica - $450.0
+    
