@@ -4,16 +4,21 @@
 
 ### Caso 1: Apache Spark y el Procesamiento Big Data
 ***¿Qué problema resuelve?***
+
 Resuelve problemas como procesar una cantidad muy grande de información y antiguamente esto saturaba las redes y frenaba todo, tambien ayuda a detección de fraude, recomendaciones personalizadas a los usuarios, análisis de registros médicos y análisis de registro de llamadas.
 
 ***¿Qué lenguaje o herramienta usan?***
+
 Utiliza el lenguaje Scala y la herramienta es Apache Spark y ayuda al análisis de código abierto para el procesamiento de datos a gran nivel.
 
 ***¿Qué ventaja les da el enfoque funcional?***
+
 Las funciones como (map, filter, groupBy) ayuda a la eficiencia para manipular y analizar datos así también la persona que programa solo describe que hacer con cada elemento y Spark decide cómo repartir y ejecutar ese trabajo.
 
 **Fuente Consultada**
+
 https://elmundodelosdatos.com/como-usar-spark-con-scala-para-procesamiento-de-big-data/
+
 https://docs.arenadata.io/en/ADH/current/references/spark/spark-shell.html
 
 **Fragmento de código real con funciones anónimas**
@@ -23,6 +28,7 @@ Crea una variable llamada DFData, después filtra la data y realiza una función
 
 ### Caso 2: Streams de Java en Sistemas Empresariales
 ***¿Qué problema resuelve?***
+
 En los sistemas empresariales utilizar bucles con (if) suele generar errores, difícil comprensión y también no se lo puede mantener. Los Streams permiten manipular y agregar datos de forma funcional y concisa sin modificar el código original.
 
 ***¿Qué lenguaje o herramienta usan?***
