@@ -14,3 +14,7 @@ Python Funciones:
 Scala Operaciones y Operaciones Combinadas: 
 
 <img width="1782" height="1005" alt="image" src="https://github.com/user-attachments/assets/f9c4b568-560d-4cd1-b13c-795db1970ec6" />
+
+Tabla: 
+
+<img width="931" height="557" alt="Tabla" src="https://github.com/user-attachments/assets/e8c52962-4404-4cef-9d08-300bbdae016f" />
