@@ -104,31 +104,55 @@ Ejemplo:
 3. Conteo ¿Cuántos elementos cumplen una condición? count 
 4. Extremos ¿Cuál es el mejor o el peor según un criterio? maxBy, minBy
 
-Situación real: Selección -Filter-
+Lista: 
+  
+    (nombre,  categoria    ,   precio , stock )
+    
+    ("Cyberpunk", "Videojuegos", 45.50, 10)
+    
+    ("Teclado Mecánico", "Hardware", 65.00, 8)
+    
+    ("Mousepad RGB", "Accesorios", 15.00, 25)
+    
+    ("Audífonos Gamer", "Hardware", 85.00, 4)
+    
+    ("Minecraft", "Videojuegos", 29.99, 50)
+    
+    ("Silla Gamer", "Hardware", 199.99, 3)
+    
+    ("Control Inalámbrico", "Accesorios", 59.99, 15)
+    
+    ("Monitor 144Hz", "Hardware", 250.00, 6)
+    
+    ("Elden Ring", "Videojuegos", 59.99, 12)
+    
+    ("FIFA 26", "Videojuegos", 60.00, 20)
+    
+    ("Micrófono USB", "Accesorios", 45.00, 9)
+    
+    ("Tarjeta Gráfica", "Hardware", 450.00, 2) 
+
+Situación real: Selección -filter-
 
 El sistema necesita filtrar y obtener únicamente los productos que tienen un precio mayor a $40.00 para una promoción especial.
-  Lista: 
-(nombre,  categoria    ,   precio , stock )
-("Cyberpunk", "Videojuegos", 45.50, 10)
+ 
+Scala: 
 
-("Teclado Mecánico", "Hardware", 65.00, 8)
+    val caro = (p: Producto) => p.precio > 100.0
+    val filtrados = productos.filter(caro)
+    filtrados
 
-("Mousepad RGB", "Accesorios", 15.00, 25)
+Java (Streams): 
 
-("Audífonos Gamer", "Hardware", 85.00, 4)
+        List<Producto> filtrados = productos.stream()
+            .filter(p -> p.getPrecio() > 100.0)
+            .collect(Collectors.toList());
+        filtrados.forEach(System.out::println);
 
-("Minecraft", "Videojuegos", 29.99, 50)
+Python: 
 
-("Silla Gamer", "Hardware", 199.99, 3)
+    caro = lambda p: p.precio > 100.0
+    filtrados = list(filter(caro, productos))
+    print(filtrados)
 
-("Control Inalámbrico", "Accesorios", 59.99, 15)
-
-("Monitor 144Hz", "Hardware", 250.00, 6)
-
-("Elden Ring", "Videojuegos", 59.99, 12)
-
-("FIFA 26", "Videojuegos", 60.00, 20)
-
-("Micrófono USB", "Accesorios", 45.00, 9)
-
-("Tarjeta Gráfica", "Hardware", 450.00, 2) 
+Situación real: Transformación -map-
