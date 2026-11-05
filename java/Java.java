@@ -21,7 +21,7 @@ class Producto {
     }
 }
 
-public class Tarea_FuncionesAnonimas {
+public class Java {
     public static void main(String[] args) {
      
         List<Producto> productos = List.of(
