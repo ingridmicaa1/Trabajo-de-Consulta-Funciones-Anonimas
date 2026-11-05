@@ -353,3 +353,46 @@ Una lista con solo 3 productos uno por cada categoría única: el primero de Vid
 **Problema que resuelve**
 
 Obtener un listado único de las categorías disponibles en la base de datos para mostrarlas en los filtros del menú principal sin repetir nombres.
+
+**4.3 Pregunta planteada:**
+
+"¿Cómo podemos filtrar los productos que cuestan más de $50, agruparlos por categoría y luego ordenarlos?"
+
+Cadena: 
+
+Se responde con filter (vista en clase) → groupBy (nueva) → sortBy (nueva).
+
+Scala: 
+
+    val esCaro = (p: Producto) => p.precio > 50.0
+    val claveCategoria = (p: Producto) => p.categoria
+    val criterioPrecio = (p: Producto) => p.precio
+    
+    val resultadoCombinado = productos.filter(esCaro).groupBy(claveCategoria)
+    resultadoCombinado
+
+Explicación: 
+
+Paso 1 (filter - vista en clase): Utiliza la función anónima filtroPrecio para recorrer la lista de 12 productos y desechar todos aquellos que cuesten $50.00 o menos, dejando únicamente los artículos de gama media-alta.
+
+Paso 2 (groupBy - nueva): Toma el resultado anterior (la lista ya filtrada) y aplica la lambda claveCategoria para separar y empaquetar los productos restantes dentro de un Map organizado por sus respectivas categorías ("Hardware", "Videojuegos", "Accesorios").
+
+**Tabla**
+<img width="931" height="557" alt="image" src="https://github.com/user-attachments/assets/157a1587-def4-4bb4-8039-54d50c0cf43e" />
+
+
+**¿En qué lenguaje fue más natural resolver los problemas?**
+
+Para mi Scala es el lenguaje más natural ya que sigue casi la sintaxis del lenguaje natural, incluso tratar las funciones anónimas como ciudadanos de primera clase con una sintaxis sumamente limpia (val).
+
+**¿En qué tipo de problema encontraste más diferencias entre lenguajes y por qué?**
+
+En Transformación Map y Selección Filter ya que en el lenguaje de Java es obligatorio abrir un flujo de datos (.stream()) y terminar con un  (.collect(Collectors.toList()), sumando lineas y dificultando la facilidad de sintaxis como Python y Scala.
+
+## Parte 5: Conclusión
+
+En pocas palabras, las funciones anónimas o lambdas son súper útiles en la programación funcional porque te salvan de estar creando métodos o clases enteras solo para hacer una operación de una sola vez. Básicamente es escribir la lógica ahí mismo, de forma más directa.
+
+Esto cambia un montón la forma en la que manejas los datos. En vez de hacer bucles for o while para recorrer y buscar datos, se concentras totalmente en el qué quieres lograr, haciendo que el código quede mucho más limpio.
+
+Ya llevándolo a la práctica, esto sirve un montón para cosas reales, como cuando se arma un catálogos de tiendas en línea o sistemas de recomendaciones. Si se tiene un inventario gigante y necesita filtrar productos por precio, agruparlos por categorías o sacar el artículo más caro para una campaña, con las lambdas puedes ir encadenando operaciones súper fluido, sin enredar el código y dejándolo fácil de entender y mantener a futuro.
