@@ -378,6 +378,7 @@ Paso 1 (filter - vista en clase): Utiliza la función anónima filtroPrecio para
 Paso 2 (groupBy - nueva): Toma el resultado anterior (la lista ya filtrada) y aplica la lambda claveCategoria para separar y empaquetar los productos restantes dentro de un Map organizado por sus respectivas categorías ("Hardware", "Videojuegos", "Accesorios").
 
 **Tabla**
+
 <img width="931" height="557" alt="image" src="https://github.com/user-attachments/assets/157a1587-def4-4bb4-8039-54d50c0cf43e" />
 
 
