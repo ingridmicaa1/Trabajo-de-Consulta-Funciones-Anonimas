@@ -66,10 +66,14 @@ Fuente: https://www.quora.com/What-is-the-origin-of-the-term-lambda-in-relation-
 La función nombrada se la define antes y se puede volver a utilizar en el código.
 
 Lenguaje: Scala 
+
     // Nombrada
+    
     def doble(x: Int): Int = x * 2
     List(1, 2, 3).map(doble)  
+    
     //Anónima
+    
      List(1, 2, 3).map(x => x * 2) 
 
 ***¿Qué significa que las funciones sean ciudadanos de primera clase? ¿Por qué eso permite pasar una lambda a map o filter?***
@@ -77,12 +81,14 @@ Lenguaje: Scala
 Significa se guarda en una variable, se pasa como argumento y se devuelve como resultado. Por eso map y filter pueden recibir una lambda porque para ellos la función es solo un parámetro más.
 
 Ejemplo: 
+
     val operaciones: List[Int => Int] = List(x => x + 1, x => x * 10)
     operaciones.map(f => f(5))
 
 ***¿Qué es un closure? Muestra una lambda que use una variable definida fuera de ella.***
 
 Una closure captura o recuerda el valor de la variable externa
+
 Fuente: https://manuais.pages.iessanclemente.net/apuntes/2.programacion/kotlin/03_prog_funcional/31.sintaxisfunciones/314.closure/index.html
 
 Ejemplo: 
@@ -91,3 +97,38 @@ Ejemplo:
     val precioFinal = calcularDescuento(100.0) 
     println(precioFinal) 
 
+## Parte 3: Aplicar: ¿en qué problemas sirven las funciones anónimas?
+
+1. Selección ¿Qué elementos cumplen una condición? filter
+2. Transformación ¿Cómo convierto cada elemento en otro valor? map
+3. Conteo ¿Cuántos elementos cumplen una condición? count 
+4. Extremos ¿Cuál es el mejor o el peor según un criterio? maxBy, minBy
+
+Situación real: Selección -Filter-
+
+El sistema necesita filtrar y obtener únicamente los productos que tienen un precio mayor a $40.00 para una promoción especial.
+  Lista: 
+(nombre,  categoria    ,   precio , stock )
+("Cyberpunk", "Videojuegos", 45.50, 10)
+
+("Teclado Mecánico", "Hardware", 65.00, 8)
+
+("Mousepad RGB", "Accesorios", 15.00, 25)
+
+("Audífonos Gamer", "Hardware", 85.00, 4)
+
+("Minecraft", "Videojuegos", 29.99, 50)
+
+("Silla Gamer", "Hardware", 199.99, 3)
+
+("Control Inalámbrico", "Accesorios", 59.99, 15)
+
+("Monitor 144Hz", "Hardware", 250.00, 6)
+
+("Elden Ring", "Videojuegos", 59.99, 12)
+
+("FIFA 26", "Videojuegos", 60.00, 20)
+
+("Micrófono USB", "Accesorios", 45.00, 9)
+
+("Tarjeta Gráfica", "Hardware", 450.00, 2) 
